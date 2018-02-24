@@ -1,14 +1,20 @@
+# Awesome Places
+
+An Ionic 3 + Angular 5 mobile APP
 
 Notes:
 
-
-
 Here are the required adjustments for angular maps.
 
-1) Install the agm package: <code>npm install --save @agm/core</code> 
+1) Install the agm package: <code>npm install --save @agm/core</code>
+ 
 2) <code>Import from '@agm/core'</code> 
+
 3) Import + configure the SAME module (in <code>AppModule  imports[]</code> , add <code>AgmCoreModule.forRoot({...})</code>
+
 4) Use component names:
 <code> 
-< agm-map ></code>  and  <code>< agm-marker ></code> (without space inside the tags)
+< agm-map ></code>  and  <code>< agm-marker ></code> <br>
+(without space inside the tags)
+
 Official docs: https://angular-maps.com/guides/getting-started/

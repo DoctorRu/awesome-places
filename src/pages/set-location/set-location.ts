@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {NavParams, ViewController} from "ionic-angular";
+
 import {Location} from "../../model/location";
 
 @Component({
@@ -7,6 +9,25 @@ import {Location} from "../../model/location";
 })
 
 export class SetLocationPage {
-	location: Location
+	location: Location;
+	marker: Location;
+
+	constructor(private navParams: NavParams,
+	            private viewCtrl: ViewController) {
+		this.location = this.navParams.get('location');
+	}
+
+	onSetMarker(event: any) {
+		this.marker = new Location(event.coords.lat, event.coords.lng);
+	}
+
+	onConfirm() {
+		this.viewCtrl.dismiss({location: this.marker})
+
+	}
+
+	onAbort() {
+		this.viewCtrl.dismiss()
+	}
 
 }

@@ -31,6 +31,8 @@ agm-map {
 
 It is really important that you define a height component `agm-map`. Otherwise, you won't see a map on the page!
 
-Get a API key for Google maps @
+Get a API key for Google maps<br>
 https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
-Official docs: https://angular-maps.com/guides/getting-started/
+<br><br>
+Official docs:
+https://angular-maps.com/guides/getting-started/

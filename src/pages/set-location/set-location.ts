@@ -1,25 +1,13 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
 
-/**
- * Generated class for the SetLocationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
-  selector: 'page-set-location',
-  templateUrl: 'set-location.html',
+	selector: 'page-set-location',
+	templateUrl: 'set-location.html',
 })
 export class SetLocationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	lat: number = -23.5853114;
+	lng: number = -46.6630912;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SetLocationPage');
-  }
 
 }

@@ -10,9 +10,11 @@ import {HomePage} from '../pages/home/home';
 import {AddPlacePage} from "../pages/add-place/add-place";
 import {PlacePage} from "../pages/place/place";
 import {SetLocationPage} from "../pages/set-location/set-location";
-import {apiKey} from "../keys/apikey";
+// import {apiKey} from "../keys/apikey";
+// import {Keys} from "../keys/keys";
+import * as keys from '../keys/keys.json'
 
-console.log('api key: %s', apiKey);
+console.log('api key: %s', keys['googleMaps']);
 @NgModule({
 	declarations: [
 		MyApp,
@@ -24,7 +26,7 @@ console.log('api key: %s', apiKey);
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
-		AgmCoreModule.forRoot({apiKey: apiKey})
+		AgmCoreModule.forRoot({apiKey: keys['googleMaps'] })
 	],
 	bootstrap: [ IonicApp ],
 	entryComponents: [

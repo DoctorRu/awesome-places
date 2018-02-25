@@ -42,6 +42,10 @@ $colors: (
 );
 
 
+$toast-md-background: red;
+$toast-md-title-color: white;
+
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -86,3 +90,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+

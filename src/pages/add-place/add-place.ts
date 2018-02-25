@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {ModalController} from "ionic-angular";
+import {Geolocation} from '@ionic-native/geolocation';
+import {LoadingController, ModalController, ToastController} from "ionic-angular";
+
 import {SetLocationPage} from "../set-location/set-location";
 import {Location} from "../../model/location";
 
@@ -20,7 +22,10 @@ export class AddPlacePage {
 
 	locationIsSet: boolean = false;
 
-	constructor(private modalCtrl: ModalController) {
+	constructor(private modalCtrl: ModalController,
+	            private geoCtrl: Geolocation,
+	            private loadingCtrl: LoadingController,
+	            private toastCtrl: ToastController) {
 
 	}
 
@@ -32,7 +37,7 @@ export class AddPlacePage {
 		const modal = this.modalCtrl.create(SetLocationPage,
 			{location: this.location, marker: this.marker});
 		modal.present();
-		modal.onDidDismiss((
+		modal.onDidDismiss(
 			data => {
 				if (data) {
 					this.location = data.location;
@@ -40,8 +45,36 @@ export class AddPlacePage {
 					this.locationIsSet = true;
 				}
 			}
-		))
+		)
 
 	}
 
+	onLocate() {
+		const loader = this.loadingCtrl.create({content: 'Connecting to satellites'});
+		loader.present();
+
+		this.geoCtrl.getCurrentPosition()
+			.then(
+				location => {
+					this.location.lat = location.coords.latitude;
+					this.location.lng = location.coords.longitude;
+					this.locationIsSet = true;
+					console.log('location: %s, %s',
+						location.coords.latitude,
+						location.coords.longitude);
+					loader.dismiss();
+				}
+			)
+			.catch(
+				error => {
+					loader.dismiss();
+					const toast = this.toastCtrl.create({
+						message: 'Something is blocking your GPS transmission',
+						duration: 2500,
+						cssClass: "background-color: #CDEDCD"
+					});
+					toast.present();
+				}
+			)
+	}
 }

@@ -11,9 +11,6 @@ import {HomePage} from '../pages/home/home';
 export class MyApp {
 	rootPage: any = HomePage;
 
-	lat: number = 51.678418;
-	lng: number = 7.809007;
-
 	constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.

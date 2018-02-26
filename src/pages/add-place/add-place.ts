@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Geolocation} from '@ionic-native/geolocation';
+import {Camera} from "@ionic-native/camera";
 import {LoadingController, ModalController, ToastController} from "ionic-angular";
 
 import {SetLocationPage} from "../set-location/set-location";
@@ -25,7 +26,8 @@ export class AddPlacePage {
 	constructor(private modalCtrl: ModalController,
 	            private geoCtrl: Geolocation,
 	            private loadingCtrl: LoadingController,
-	            private toastCtrl: ToastController) {
+	            private toastCtrl: ToastController,
+	            private cameraCtrl: Camera) {
 
 	}
 
@@ -76,5 +78,20 @@ export class AddPlacePage {
 					toast.present();
 				}
 			)
+	}
+
+	onTakePhoto(){
+		this.cameraCtrl.getPicture({
+			encodingType: this.cameraCtrl.EncodingType.JPEG,
+			correctOrientation: true
+		}).then(
+			imageData =>
+				console.log(imageData)
+		)
+			.catch(
+				err =>
+					console.log(err)
+			)
+
 	}
 }

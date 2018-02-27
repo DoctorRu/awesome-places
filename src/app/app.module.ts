@@ -42,8 +42,8 @@ console.log('api key: %s', keys['googleMaps']);
 	providers: [
 		StatusBar,
 		SplashScreen,
-		Geolocation,
-		Camera,
+		Geolocation, // Talvez incluir somente no modules da página específica
+		Camera,  // idem
 		PlacesService,
 		{provide: ErrorHandler, useClass: IonicErrorHandler}
 	]

@@ -15,6 +15,7 @@ import {SetLocationPage} from "../pages/set-location/set-location";
 // import {apiKey} from "../keys/apikey";
 // import {Keys} from "../keys/keys";
 import * as keys from '../keys/keys.json'
+import {PlacesService} from "../services/places";
 
 console.log('api key: %s', keys['googleMaps']);
 @NgModule({
@@ -43,6 +44,7 @@ console.log('api key: %s', keys['googleMaps']);
 		SplashScreen,
 		Geolocation,
 		Camera,
+		PlacesService,
 		{provide: ErrorHandler, useClass: IonicErrorHandler}
 	]
 })

@@ -14,14 +14,15 @@ import {Location} from "../../model/location";
 
 export class AddPlacePage {
 
+	marker: Location;
+	locationIsSet: boolean = false;
+	imageUrl = '';
+
 	location: Location = {
 		lat: -23.5853114,
 		lng: -46.6630912
 	};
 
-	marker: Location;
-
-	locationIsSet: boolean = false;
 
 	constructor(private modalCtrl: ModalController,
 	            private geoCtrl: Geolocation,
@@ -86,7 +87,7 @@ export class AddPlacePage {
 			correctOrientation: true
 		}).then(
 			imageData =>
-				console.log(imageData)
+				this.imageUrl = imageData
 		)
 			.catch(
 				err =>

@@ -6,6 +6,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {AgmCoreModule} from '@agm/core';
 import {Geolocation} from "@ionic-native/geolocation";
 import {Camera} from "@ionic-native/camera";
+import {File} from "@ionic-native/file";
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
@@ -17,7 +18,8 @@ import {SetLocationPage} from "../pages/set-location/set-location";
 import * as keys from '../keys/keys.json'
 import {PlacesService} from "../services/places";
 
-console.log('api key: %s', keys['googleMaps']);
+console.log('api key: %s', keys[ 'googleMaps' ]);
+
 @NgModule({
 	declarations: [
 		MyApp,
@@ -29,7 +31,7 @@ console.log('api key: %s', keys['googleMaps']);
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
-		AgmCoreModule.forRoot({apiKey: keys['googleMaps'] })
+		AgmCoreModule.forRoot({apiKey: keys[ 'googleMaps' ]})
 	],
 	bootstrap: [ IonicApp ],
 	entryComponents: [
@@ -45,6 +47,7 @@ console.log('api key: %s', keys['googleMaps']);
 		Geolocation, // Talvez incluir somente no modules da página específica
 		Camera,  // idem
 		PlacesService,
+		File,
 		{provide: ErrorHandler, useClass: IonicErrorHandler}
 	]
 })

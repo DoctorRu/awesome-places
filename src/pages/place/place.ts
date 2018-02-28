@@ -1,25 +1,31 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavParams, ViewController} from 'ionic-angular';
+import {Place} from "../../model/place";
+import {PlacesService} from "../../services/places";
 
-/**
- * Generated class for the PlacePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
-  selector: 'page-place',
-  templateUrl: 'place.html',
+	selector: 'page-place',
+	templateUrl: 'place.html',
 })
 export class PlacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	place: Place;
+	index: number;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PlacePage');
-  }
+	constructor(public navParams: NavParams,
+	            private viewCtrl: ViewController,
+	            private placesService: PlacesService) {
 
+		this.place = this.navParams.get('place');
+		this.index = this.navParams.get('index');
+	}
+
+	onLeave(){
+		this.viewCtrl.dismiss();
+	}
+
+	onDelete(){
+		this.placesService.deletePlace(this.index);
+		this.onLeave();
+	}
 }

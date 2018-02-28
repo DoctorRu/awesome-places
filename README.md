@@ -7,7 +7,20 @@
 Here are the required adjustments for angular maps.
 
 1) Install the agm package: <code>npm install --save @agm/core</code>
+
+	1.5) Create the file <code>src/keys/keys.json</code> with:
+<code>
+{
+	"googleMaps": "your google maps api key"
+}
+</code>
+
+
+		Get a API key for Google maps<br>
+		https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
+
  
+
 2) <code>import { AgmCoreModule } from '@agm/core'; 
 
 3) Import + configure the SAME module (in <code>AppModule  imports[]</code> , add <code>AgmCoreModule.forRoot({...})</code>
@@ -31,8 +44,7 @@ agm-map {
 
 It is really important that you define a height component `agm-map`. Otherwise, you won't see a map on the page!
 
-Get a API key for Google maps<br>
-https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key
+
 <br><br>
 Official docs:
 https://angular-maps.com/guides/getting-started/

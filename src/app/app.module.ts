@@ -7,6 +7,7 @@ import {AgmCoreModule} from '@agm/core';
 import {Geolocation} from "@ionic-native/geolocation";
 import {Camera} from "@ionic-native/camera";
 import {File} from "@ionic-native/file";
+import {IonicStorageModule} from '@ionic/storage';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
@@ -31,6 +32,7 @@ console.log('api key: %s', keys[ 'googleMaps' ]);
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
+		IonicStorageModule.forRoot(),
 		AgmCoreModule.forRoot({apiKey: keys[ 'googleMaps' ]})
 	],
 	bootstrap: [ IonicApp ],

@@ -2,6 +2,9 @@ import {Storage} from '@ionic/storage';
 import {Place} from "../model/place";
 import {Location} from "../model/location";
 import {Injectable} from "@angular/core";
+import {File} from "@ionic-native/file";
+
+declare var cordova: any;
 
 @Injectable()
 
@@ -9,7 +12,8 @@ export class PlacesService {
 
 	private places: Place[] = [];
 
-	constructor(private storage: Storage) {
+	constructor(private storage: Storage,
+	            private file: File) {
 
 	}
 
@@ -28,7 +32,6 @@ export class PlacesService {
 					this.places.splice(this.places.indexOf(place), 1)
 				}
 			)
-
 	}
 
 	loadPlaces() {
@@ -45,7 +48,32 @@ export class PlacesService {
 	}
 
 	deletePlace(index: number) {
+		const place = this.places[index];
+		
 		this.places.splice(index, 1);
+		this.storage.set('places', this.places)
+			.then(() => {
+				this.removeFile(place);
+			})
+			.catch(err => console.log(err))
+
+	}
+
+	private removeFile(place: Place) {
+		const currentName = place.imageUrl.replace(/^.*[\\\/]/, '');
+		this.file.removeFile(cordova.file.dataDirectory, currentName)
+			.then(
+				() => console.log('Removed file')
+			)
+			.catch(
+				() => {
+					console.log('Error while removing file');
+					this.addPlace(place.title,
+						place.description,
+						place.location,
+						place.imageUrl)
+				}
+			)
 	}
 
 }

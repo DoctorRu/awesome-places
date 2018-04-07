@@ -1,5 +1,11 @@
 # Awesome Places
 
+## Screennshot
+
+![alt tag](https://raw.githubusercontent.com/DoctorRu/awesome-places/master/screenshots/01.jpg)
+![alt tag](https://raw.githubusercontent.com/DoctorRu/awesome-places/master/screenshots/02.jpg)
+
+
 ### An Ionic 3 + Angular 5 mobile APP
 
 <b>Notes:</b>
